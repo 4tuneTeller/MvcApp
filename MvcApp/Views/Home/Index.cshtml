@@ -1,0 +1,39 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Адресная книга</title>
+</head>
+<body>
+    <div>
+        <h3>Контакты</h3>
+        <table>
+            <tr>
+                <td><p>ФИО</p></td>
+                <td><p>Телефон</p></td>
+                <td><p>Эл. почта</p></td>
+                <td><p>Подразделение</p></td>
+                <td><p>Должность</p></td>
+                <td></td>
+            </tr>
+            @foreach (MvcApp.Models.AddressBook c in Model)
+            {
+                <tr>
+                    <td><p>@c.FullName</p></td>
+                    <td><p>@c.PhoneNumber</p></td>
+                    <td><p>@c.EMail</p></td>
+                    <td><p>@c.Department</p></td>
+                    <td><p>@c.Position</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</body>
+</html>
