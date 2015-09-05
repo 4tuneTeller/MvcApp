@@ -18,8 +18,10 @@ namespace MvcApp.Controllers
             using (AddressBookEntities context = new AddressBookEntities())
             {
                 var query = from c in context.AddressBook
-                            orderby c.FullName
-                            select c;
+                            group c by c.Department into departments
+                            orderby departments.Key
+                            select departments;
+
                 contacts = query.ToArray();
             }
 

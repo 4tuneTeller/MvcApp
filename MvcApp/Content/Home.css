@@ -1,0 +1,17 @@
+﻿body {
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+}
+
+td {
+    border: solid;
+    padding: 5px;
+}
+
+tr.department-row td {
+    padding-left: 30px;
+}

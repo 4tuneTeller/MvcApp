@@ -116,6 +116,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Home.css" />
     <Content Include="Global.asax" />
     <Content Include="Models\AddressBook.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -157,7 +158,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="packages.config" />
     <EntityDeploy Include="Models\AddressBook.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
