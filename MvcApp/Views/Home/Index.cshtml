@@ -21,12 +21,12 @@
                 <th>Эл. почта</th>
                 <th>Должность</th>
             </tr>
-            @foreach (IGrouping<string, MvcApp.Models.AddressBook> department in Model)
+            @foreach (MvcApp.Controllers.HomeController.GroupedContacts department in Model)
             {
                 <tr class="department-row">
-                    <td colspan="4">@department.Key</td>
+                    <td colspan="4">@department.Group</td>
                 </tr>
-                foreach (var contact in department.OrderBy(c => c.FullName))
+                foreach (var contact in department.Contacts)
                 {
                     <tr>
                         <td>@contact.FullName</td>
