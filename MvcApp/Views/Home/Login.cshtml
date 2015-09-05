@@ -13,6 +13,12 @@
 <body>
     <div> 
         <h3>Login</h3>
+        @if (ViewBag.Message != null)
+        {
+            <div>
+                <span>@ViewBag.Message</span>
+            </div>
+        }
         @using (Html.BeginForm("Login", "Home", FormMethod.Post))
         {
             <div>
@@ -24,9 +30,10 @@
                 @Html.Password("password")
             </div>
             <div>
-                <input type="submit" value="Login" />
+                <input type="submit" value="Login" id="login-button" />
             </div>
         }
     </div>
+    @Scripts.Render("~/Scripts/Login.js")
 </body>
 </html>

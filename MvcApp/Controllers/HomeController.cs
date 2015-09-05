@@ -26,7 +26,7 @@ namespace MvcApp.Controllers
             return View(contacts);
         }
 
-        // Get: Login
+        // Get: Home/Login
         [AllowAnonymous]
         public ActionResult Login()
         {
@@ -44,7 +44,10 @@ namespace MvcApp.Controllers
                 return RedirectToAction("Index");
             }
             else
+            {
+                ViewBag.Message = "Неверная комбинация логина и пароля";
                 return View();
+            }
         }
     }
 }
