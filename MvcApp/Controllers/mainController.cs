@@ -7,21 +7,31 @@ using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
-    public class MainController : Controller
+    public class MainController : Controller // контроллер страницы с таблицей (main)
     {
         // GET: main
         [Authorize]
         public ActionResult Index()
         {
-            Array contacts;
-            using (AddressBookEntities context = new AddressBookEntities())
+            try
             {
-                contacts = context.AddressBook.GroupBy(c => c.Department).AsEnumerable().Select(g => new GroupedContacts { Group = g.Key, Contacts = g.OrderBy(c => c.FullName).ToArray() }).ToArray();
-            }
+                Array contacts;
+                using (AddressBookEntities context = new AddressBookEntities())
+                {
+                    // запрос в базу данных: группируем записи по Департаменту, а затем в каждой группе сортируем записи по ФИО
+                    contacts = context.AddressBook.GroupBy(c => c.Department).AsEnumerable().Select(g => new GroupedContacts { Group = g.Key, Contacts = g.OrderBy(c => c.FullName).ToArray() }).ToArray();
+                }
 
-            return View(contacts);
+                return View(contacts);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Ошибка! " + ex.Message;
+                return View();
+            }
         }
 
+        // структура, которую пришлось ввести для сортировки записей внутри группы linq-запросом
         public struct GroupedContacts
         {
             public string Group;

@@ -1,4 +1,5 @@
-﻿(function () {
+﻿// функция для скрывания кнопки Login при пустых полях username и password, написана на чистом javascript
+(function () {
     var loginButton = document.getElementById('login-button');
     loginButton.style.visibility = 'hidden';
 

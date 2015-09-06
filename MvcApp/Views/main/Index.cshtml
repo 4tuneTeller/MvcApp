@@ -9,11 +9,17 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Адресная книга</title>
-    <link href="@Url.Content("~/Content/Home.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Main.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div>
         <h3>Контакты</h3>
+        @if (ViewBag.Message != null)
+        {
+            <div>
+                <span>@ViewBag.Message</span>
+            </div>
+        }
         <table>
             <tr>
                 <th>ФИО</th>
@@ -21,19 +27,21 @@
                 <th>Эл. почта</th>
                 <th>Должность</th>
             </tr>
-            @foreach (MvcApp.Controllers.MainController.GroupedContacts department in Model)
-            {
-                <tr class="department-row">
-                    <td colspan="4">@department.Group</td>
-                </tr>
-                foreach (var contact in department.Contacts)
+            @if (Model != null) {
+                foreach (MvcApp.Controllers.MainController.GroupedContacts department in Model)
                 {
+                    <tr class="department-row">
+                        <td colspan="4">@department.Group</td>
+                    </tr>
+                    foreach (var contact in department.Contacts)
+                    {
                     <tr>
                         <td>@contact.FullName</td>
                         <td>@contact.PhoneNumber</td>
                         <td>@contact.EMail</td>
                         <td>@contact.Position</td>
                     </tr>
+                    }
                 }
             }
         </table>
