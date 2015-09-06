@@ -22,15 +22,15 @@
         @using (Html.BeginForm("Login", "Login", FormMethod.Post))
         {
             <div>
-                @Html.Label("Username:")
+                @Html.Label("Имя пользователя:")
                 @Html.TextBox("username")
             </div>
             <div>
-                @Html.Label("Password:")
+                @Html.Label("Пароль:")
                 @Html.Password("password")
             </div>
             <div>
-                <input type="submit" value="Login" id="login-button" />
+                <input type="submit" value="Вход" id="login-button" />
             </div>
         }
     </div>

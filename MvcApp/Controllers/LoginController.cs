@@ -23,7 +23,7 @@ namespace MvcApp.Controllers
         {
             try
             {
-                if (username == "Test1" && password == "Test2") // проверка введенных пользователем данных
+                if (username == "test1" && password == "test2") // проверка введенных пользователем данных
                 {
                     FormsAuthentication.SetAuthCookie(username, true); // если данные верны - логиним пользователя, сохранив куки
                     return RedirectToRoute("Main"); // перенаправляем на страницу main

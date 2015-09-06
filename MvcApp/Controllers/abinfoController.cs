@@ -40,7 +40,7 @@ namespace MvcApp.Controllers
                             XElement xml = new XElement("AddressBook", new XElement("Contact", new XAttribute("ID", elementId), xmlSubElements));
                             xmlDoc.Add(xml);
 
-                            return Content(xmlDoc.ToString(), "text/xml");
+                            return Content(xmlDoc.Declaration.ToString() + xmlDoc.ToString(), "text/xml");
                         }
                         else
                         {
@@ -63,7 +63,7 @@ namespace MvcApp.Controllers
         private ContentResult errorResult(XDocument xmlDoc, string message)
         {
             xmlDoc.Add(new XElement("Error", message));
-            return Content(xmlDoc.ToString(), "text/xml");
+            return Content(xmlDoc.Declaration.ToString() + xmlDoc.ToString(), "text/xml");
         }
     }
 }

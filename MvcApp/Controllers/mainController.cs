@@ -10,7 +10,7 @@ namespace MvcApp.Controllers
     public class MainController : Controller // контроллер страницы с таблицей (main)
     {
         // GET: main
-        [Authorize]
+        [Authorize] // доступ к этой странице разрешен только авторизованным пользователем, если пользователь не авторизован - его перенаправляет на страницу login (настроено в  Web.config)
         public ActionResult Index()
         {
             try
