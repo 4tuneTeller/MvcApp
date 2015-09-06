@@ -8,7 +8,7 @@ using MvcApp.Models;
 
 namespace MvcApp.Controllers
 {
-    public class abinfoController : Controller
+    public class AbinfoController : Controller
     {
         // GET: abinfo
         public ActionResult Index()

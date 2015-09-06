@@ -21,7 +21,7 @@
                 <th>Эл. почта</th>
                 <th>Должность</th>
             </tr>
-            @foreach (MvcApp.Controllers.HomeController.GroupedContacts department in Model)
+            @foreach (MvcApp.Controllers.MainController.GroupedContacts department in Model)
             {
                 <tr class="department-row">
                     <td colspan="4">@department.Group</td>

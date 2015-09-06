@@ -11,7 +11,7 @@
     <title>Login</title>
 </head>
 <body>
-    <div> 
+    <div>
         <h3>Login</h3>
         @if (ViewBag.Message != null)
         {
@@ -19,7 +19,7 @@
                 <span>@ViewBag.Message</span>
             </div>
         }
-        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+        @using (Html.BeginForm("Login", "Login", FormMethod.Post))
         {
             <div>
                 @Html.Label("Username:")
