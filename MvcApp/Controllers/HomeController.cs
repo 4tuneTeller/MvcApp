@@ -17,15 +17,6 @@ namespace MvcApp.Controllers
             Array contacts;
             using (AddressBookEntities context = new AddressBookEntities())
             {
-                //var query = from c in context.AddressBook
-                //            group c by c.Department into departments
-                //            orderby departments.Key
-                //            select departments;
-
-                //select new GroupedContacts { Group = departments.Key, Contacts = departments.OrderBy(c => c.FullName).ToArray() }; //{ Group = departments.Key, Elements = departments.OrderBy(c => c.FullName) };
-
-                //contacts = query.AsEnumerable().Select(g => new GroupedContacts { Group = g.Key, Contacts = g.OrderBy(c => c.FullName).ToArray() }).ToArray();
-                
                 contacts = context.AddressBook.GroupBy(c => c.Department).AsEnumerable().Select(g => new GroupedContacts { Group = g.Key, Contacts = g.OrderBy(c => c.FullName).ToArray() }).ToArray();
             }
 
@@ -44,14 +35,22 @@ namespace MvcApp.Controllers
         [AllowAnonymous]
         public ActionResult Login(string username, string password)
         {
-            if (username == "Test1" && password == "Test2")
+            try
             {
-                FormsAuthentication.SetAuthCookie(username, true);
-                return RedirectToAction("Index");
+                if (username == "Test1" && password == "Test2")
+                {
+                    FormsAuthentication.SetAuthCookie(username, true);
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.Message = "Неверная комбинация логина и пароля";
+                    return View();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                ViewBag.Message = "Неверная комбинация логина и пароля";
+                ViewBag.Message = "Ошибка! " + ex.Message;
                 return View();
             }
         }
